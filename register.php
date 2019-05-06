@@ -55,5 +55,5 @@ if(!$result){
 
 // redirection
 
-header('Location: /login-form.php');
+header('Location: /task-manager/login-form.php');
 exit;
