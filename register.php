@@ -1,5 +1,4 @@
 <?php
-//var_dump($_POST);
 
 // receive data from $_POST and create variables from it
 
