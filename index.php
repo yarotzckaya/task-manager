@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if($_SESSION["id"]) :
 // this page will be available only for logged in users
   ?>
@@ -229,9 +230,14 @@ if($_SESSION["id"]) :
   </body>
 </html>
 
-<?php
-else :
-  echo "You are not logged in! "; ?>
-   <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Назад</a>
+<?php 
+
+  else :
+
+    $errorMessage = "You are not logged in! ";
+    include 'errors.php';
+    exit;
+
+    ?>
  <?php endif;
 ?>
