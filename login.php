@@ -38,5 +38,8 @@ if($user){
 	 $_SESSION['username'] = $user[0]["username"];
 	 $_SESSION['email'] = $user[0]["email"];
 	 $_SESSION["password"] = $user[0]["password"];
-	var_dump($_SESSION);
+	//var_dump($_SESSION);
+
+	 header('Location: /task_manager-markup/index.php');
+	exit;
 }
