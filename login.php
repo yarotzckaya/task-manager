@@ -27,8 +27,8 @@ $statement->execute([':email' => $email, ':password' => $password]);
 
 $user = $statement->fetchAll();			// достаем все строки
 
-var_dump($user);		// распечатывает строки, которые мы достали из БД
-echo "<br>";
+//var_dump($user);		// распечатывает строки, которые мы достали из БД
+//echo "<br>";
 
 // if the user exists - store data to the session
 
@@ -38,8 +38,11 @@ if($user){
 	 $_SESSION['username'] = $user[0]["username"];
 	 $_SESSION['email'] = $user[0]["email"];
 	 $_SESSION["password"] = $user[0]["password"];
-	//var_dump($_SESSION);
 
 	 header('Location: /task_manager-markup/index.php');
+	exit;
+} else {
+	$errorMessage = "Invalid data.";
+	include 'errors.php';
 	exit;
 }
