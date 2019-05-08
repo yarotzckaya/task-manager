@@ -4,7 +4,7 @@
 
 
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 
 
 // validation: if no data was sent from the form
@@ -37,7 +37,7 @@ if($user){
 	 $_SESSION["id"] = $user[0]["id"];
 	 $_SESSION['username'] = $user[0]["username"];
 	 $_SESSION['email'] = $user[0]["email"];
-	 $_SESSION["password"] = $user[0]["password"];
+	 $_SESSION["password"] = md5($user[0]["password"]);
 
 	 header('Location: /task_manager-markup/index.php');
 	exit;
