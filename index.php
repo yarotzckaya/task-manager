@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+if($_SESSION["id"]) :
+// this page will be available only for logged in users
+  ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,8 +41,6 @@
             <strong>Tasks</strong>
             <p>
               <?php 
-
-              session_start();
                 echo "Hello, " . $_SESSION["username"];
               ?>
             </p>
@@ -226,3 +228,10 @@
     <script src="assets/js/bootstrap.js"></script>
   </body>
 </html>
+
+<?php
+else :
+  echo "You are not logged in! "; ?>
+   <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Назад</a>
+ <?php endif;
+?>
