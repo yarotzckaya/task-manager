@@ -25,10 +25,7 @@ $sql = 'SELECT * from users where email=:email and password=:password';
 $statement = $pdo->prepare($sql);
 $statement->execute([':email' => $email, ':password' => $password]);
 
-$user = $statement->fetchAll();			// достаем все строки
-
-//var_dump($user);		// распечатывает строки, которые мы достали из БД
-//echo "<br>";
+$user = $statement->fetch();			// достаем все строки
 
 // if the user exists - store data to the session
 
@@ -37,7 +34,7 @@ if($user){
 	 $_SESSION["id"] = $user[0]["id"];
 	 $_SESSION['username'] = $user[0]["username"];
 	 $_SESSION['email'] = $user[0]["email"];
-	 $_SESSION["password"] = md5($user[0]["password"]);
+	// $_SESSION["password"] = md5($user[0]["password"]);
 
 	 header('Location: /task_manager-markup/index.php');
 	exit;

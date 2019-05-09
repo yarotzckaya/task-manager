@@ -43,6 +43,7 @@ if($_SESSION["id"]) :
             <p>
               <?php 
                 echo "Hello, " . $_SESSION["username"];
+                var_dump($_SESSION);
               ?>
             </p>
           </a>

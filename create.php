@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if($_SESSION["id"]) :
+// this page will be available only for logged in users
+  ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,7 +31,7 @@
         <input type="text" name="title" id="inputEmail" class="form-control" placeholder="Название" required>
 
         <label for="inputEmail" class="sr-only">Описание</label>
-        <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
+        <textarea name="text" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
         <input type="file">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
@@ -32,3 +39,15 @@
     </div>
   </body>
 </html>
+
+<?php 
+
+  else :
+
+    $errorMessage = "You are not logged in! ";
+    include 'errors.php';
+    exit;
+
+    ?>
+ <?php endif;
+?>
