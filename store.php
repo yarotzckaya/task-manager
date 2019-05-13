@@ -30,3 +30,4 @@ $statement = $pdo->prepare($sql);
 $result = $statement->execute($_POST);				
 
 
+header('Location: /task_manager-markup/index.php');
