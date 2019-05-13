@@ -43,7 +43,6 @@ if($_SESSION["id"]) :
             <p>
               <?php 
                 echo "Hello, " . $_SESSION['username'];
-                var_dump($_SESSION);
               ?>
             </p>
           </a>
@@ -61,7 +60,7 @@ if($_SESSION["id"]) :
           <h1 class="jumbotron-heading">Проект Task-manager</h1>
           <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Добавить запись</a>
+            <a href="http://localhost/task_manager-markup/create.php" class="btn btn-primary my-2">Добавить запись</a>
           </p>
         </div>
       </section>

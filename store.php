@@ -1,11 +1,20 @@
 <?php
 
 // data from the $_POST
+$uploaddir = 'uploads/';
+$uploadfile = $uploaddir . basename($_FILES['file']['name']);
+
+echo '<pre>';
+if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+    echo "File is uploaded!\n";
+} else {
+    echo "File uploading error!\n";
+}
 
 
 $title = $_POST['title'];
 $text = $_POST['text'];
-$file = $_FILES['upload'];
+$file = $_FILES['file'];
 
 
 // validation: if no data was sent from the form
@@ -23,8 +32,8 @@ foreach ($_POST as $input) {
 // variables:
 
 
-$fileName = $_FILES['upload']['name']; 
-$fileType = $_FILES['upload']['size'];
+$fileName = $_FILES['file']['name']; 
+$fileType = $_FILES['file']['size'];
 
 
 // preparation SQL query

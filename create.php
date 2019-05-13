@@ -33,7 +33,7 @@ if($_SESSION["id"]) :
         <label for="inputEmail" class="sr-only">Описание</label>
         <textarea name="text" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
 
-          <input type="file" name="upload">
+          <input type="file" name="file" id="file">
 
       
 
