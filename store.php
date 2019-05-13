@@ -4,6 +4,8 @@
 $uploaddir = 'uploads/';
 $uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
+
+// uploading files to /uploads
 echo '<pre>';
 if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
     echo "File is uploaded!\n";
@@ -26,15 +28,6 @@ foreach ($_POST as $input) {
 		exit;
 	}
 }
-
-// check the image
-
-// variables:
-
-
-$fileName = $_FILES['file']['name']; 
-$fileType = $_FILES['file']['size'];
-
 
 // preparation SQL query
 
