@@ -16,3 +16,17 @@ foreach ($_POST as $input) {
 		exit;
 	}
 }
+
+
+// preparation SQL query
+
+$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+
+$sql = 'INSERT INTO posts (title, text) VALUES (:title, :text)';
+$statement = $pdo->prepare($sql);
+
+// execute the query
+
+$result = $statement->execute($_POST);				
+
+
