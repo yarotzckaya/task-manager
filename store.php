@@ -16,8 +16,10 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
 
 $title = $_POST['title'];
 $text = $_POST['text'];
-$file = $_FILES['file'];
+$filePath = 'uploads/' . $_FILES['file']['name'];
 
+
+var_dump($filePath);
 
 // validation: if no data was sent from the form
 
@@ -33,12 +35,14 @@ foreach ($_POST as $input) {
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
 
-$sql = 'INSERT INTO posts (title, text) VALUES (:title, :text)';
+$sql = 'INSERT INTO posts (title, text, filePath) VALUES (:title, :text, :filePath)';
 $statement = $pdo->prepare($sql);
+
+$_POST["filePath"] = $filePath;		// add the path to picture to the $_POST, which will be stored to the DB
 
 // execute the query
 
 $result = $statement->execute($_POST);				
 
 
-header('Location: /task_manager-markup/index.php');
+//header('Location: /task_manager-markup/index.php');

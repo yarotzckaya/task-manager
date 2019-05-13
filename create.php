@@ -35,8 +35,6 @@ if($_SESSION["id"]) :
 
           <input type="file" name="file" id="file">
 
-      
-
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
