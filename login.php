@@ -2,7 +2,6 @@
 
 // data from the $_POST
 
-
 $email = $_POST['email'];
 $password = md5($_POST['password']);
 
@@ -31,11 +30,12 @@ $user = $statement->fetch();			// достаем все строки
 
 if($user){
 	session_start();								// как оказалось, необязательно делать старт сессии в самом начале файла
-	 $_SESSION["id"] = $user[0]["id"];
-	 $_SESSION['username'] = $user[0]["username"];
-	 $_SESSION['email'] = $user[0]["email"];
+	 $_SESSION["id"] = $user["id"];
+	 $_SESSION['username'] = $user["username"];
+	 $_SESSION['email'] = $user["email"];
 	// $_SESSION["password"] = md5($user[0]["password"]);
 
+	 //var_dump($_SESSION);
 	 header('Location: /task_manager-markup/index.php');
 	exit;
 } else {

@@ -21,8 +21,8 @@
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
 
-        <label for="inputEmail" class="sr-only">Имя</label>
-        <input type="text" name = "username" id="inputEmail" class="form-control" placeholder="Имя" required autofocus>
+        <label for="username" class="sr-only">Имя</label>
+        <input type="text" name = "username" id="username" class="form-control" placeholder="Имя" required autofocus>
 
         <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" name = "email" id="inputEmail" class="form-control" placeholder="Email" required >

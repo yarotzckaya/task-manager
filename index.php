@@ -42,7 +42,7 @@ if($_SESSION["id"]) :
             <strong>Tasks</strong>
             <p>
               <?php 
-                echo "Hello, " . $_SESSION["username"];
+                echo "Hello, " . $_SESSION['username'];
                 var_dump($_SESSION);
               ?>
             </p>
