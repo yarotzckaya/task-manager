@@ -40,9 +40,11 @@ $statement = $pdo->prepare($sql);
 
 $_POST["filePath"] = $filePath;		// add the path to picture to the $_POST, which will be stored to the DB
 
+// ! it's possible to add some file with the same name twice, but in the folder it will be an only first file with that name
+
 // execute the query
 
 $result = $statement->execute($_POST);				
 
 
-//header('Location: /task_manager-markup/index.php');
+header('Location: /task_manager-markup/index.php');
