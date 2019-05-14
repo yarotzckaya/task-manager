@@ -58,7 +58,10 @@ if(!$post){
         <input type="text" id="title" name="title" class="form-control" placeholder="Название" value="<?php echo $post['title'];?>">
         <label for="inputEmail" class="sr-only">Описание</label>
         <textarea name="text" class="form-control" cols="30" rows="10" placeholder="Описание"><?php echo $post['text'];?></textarea>
-        <input type="file" name="file" id="file">
+        <input type="file" name="file" id="file" value="<?php echo $post['filePath'];?>">
+
+        <input type="hidden" name="post_id" id="post_id" value="<?php echo $_GET['id']; ?>">
+
         <img src="<?php echo $post['filePath'];?>" alt="" width="300" class="mb-3">
         <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
