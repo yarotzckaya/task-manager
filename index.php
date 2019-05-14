@@ -69,20 +69,20 @@ if($_SESSION["id"]) :
        
         <div class="container"> 
           <div class="row">
-            <div class="col-md-4 col-lg-5">
          
           <?php 
 
 
             $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
             $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'];     // select only the posts that belong to the current user
+            $statement = $pdo->prepare($sql);
 
             $statement = $pdo->query($sql);
             $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
           
                foreach($posts as $post){
                 ?>
-                    
+                          <div class="col-md-4 col-lg-5">
                             <div class="card mb-4 shadow-sm">
                               <img class="card-img-top" src="<?php echo $post['filePath']; ?>">
                               <div class="card-body">
@@ -95,7 +95,8 @@ if($_SESSION["id"]) :
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                           </div>
+                         </div>
                    
                 <?php  
                 }
@@ -103,7 +104,6 @@ if($_SESSION["id"]) :
                 </div>
         </div>
       </div>
-</div>
     </main>
 
     <footer class="text-muted">
