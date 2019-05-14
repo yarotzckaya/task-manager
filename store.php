@@ -52,4 +52,4 @@ $_POST["user_id"] = $user_id;
 $result = $statement->execute($_POST);				
 
 
-//header('Location: /task_manager-markup/index.php');
+header('Location: /task_manager-markup/index.php');
