@@ -66,9 +66,10 @@ if($_SESSION["id"]) :
       </section>
 
       <div class="album py-5 bg-light">
-        <div class="container">
+       
+        <div class="container"> 
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-5">
          
           <?php 
 
@@ -81,17 +82,16 @@ if($_SESSION["id"]) :
           
                foreach($posts as $post){
                 ?>
-               
+                    
                             <div class="card mb-4 shadow-sm">
                               <img class="card-img-top" src="<?php echo $post['filePath']; ?>">
                               <div class="card-body">
                                 <p class="card-text"><?php echo $post['title']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
-                                    <?php echo $post['filePath']; ?>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Подробнее</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
+                                    <a href="post.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                                    <a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                    <a href="delete.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
                                   </div>
                                 </div>
                               </div>
@@ -101,10 +101,9 @@ if($_SESSION["id"]) :
                 }
                  ?>
                 </div>
-             </div>
         </div>
       </div>
-
+</div>
     </main>
 
     <footer class="text-muted">
