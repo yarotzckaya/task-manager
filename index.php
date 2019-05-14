@@ -83,11 +83,12 @@ if($_SESSION["id"]) :
                 ?>
                
                             <div class="card mb-4 shadow-sm">
-                              <img class="card-img-top" src="<?php $post['filePath'] ?>">
+                              <img class="card-img-top" src="<?php echo $post['filePath']; ?>">
                               <div class="card-body">
                                 <p class="card-text"><?php echo $post['title']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
+                                    <?php echo $post['filePath']; ?>
                                     <a href="#" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                                     <a href="#" class="btn btn-sm btn-outline-secondary">Изменить</a>
                                     <a href="#" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
