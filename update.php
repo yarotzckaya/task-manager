@@ -46,7 +46,7 @@ if(empty($_FILES['name'])){
 } else {
 	$filePath = 'uploads/' . $_FILES['file']['name'];
 	$_POST['filePath'] = $filePath;	
-	$sql = 'UPDATE posts SET title= :title, text= :text, filePath= :filePath, user_id= :user_id WHERE user_id=' . $_SESSION['id'];
+	$sql = 'UPDATE posts SET title= :title, text= :text, filePath= :filePath, user_id= :user_id WHERE user_id=' . $_SESSION['id'] . 'AND id= ' . $_POST['post_id'];
 }
 
 unset($_POST['post_id']);		// we don't need the id in overwriting the data
@@ -59,4 +59,4 @@ $statement = $pdo->prepare($sql);
 $result = $statement->execute($_POST);		
 
 
-//header('Location: /task_manager-markup/index.php');
+header('Location: /task_manager-markup/index.php');

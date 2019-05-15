@@ -8,12 +8,12 @@ if($_SESSION["id"]) :
   $id = $_GET['id'];
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-$sql = 'SELECT * from posts where id=:id';
+$sql = 'SELECT * from posts where id=:id AND user_id=' . $_SESSION['id'];
 
 $statement = $pdo->prepare($sql);
 $statement->execute([':id' => $id]);
 
-$post = $statement->fetch();      // достаем все строки
+$post = $statement->fetch(PDO::FETCH_ASSOC);      // достаем все строки
 
 // if the user exists - store data to the session
 
@@ -43,11 +43,11 @@ if(!$post){
   <?php 
 
 
-            $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-            $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'] . ' AND id=' . $_GET['id'];     // select only the posts that belong to the current user
-            $statement = $pdo->prepare($sql);
-            $statement = $pdo->query($sql);
-            $post = $statement->fetch(PDO::FETCH_ASSOC);
+            // $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+            // $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'] . ' AND id=' . $_GET['id'];     // select only the posts that belong to the current user
+            // $statement = $pdo->prepare($sql);
+            // $statement = $pdo->query($sql);
+            // $post = $statement->fetch(PDO::FETCH_ASSOC);
 ?>
   <body>
     <div class="form-wrapper text-center">
