@@ -12,7 +12,9 @@ $id = $_GET['id'];		// post id
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
 
-$pdo->exec("DELETE * FROM posts where id=:id AND user_id=" . $_SESSION['id']);
+$pdo->exec("DELETE FROM posts where id=" . $id . " AND user_id=" . $_SESSION['id']);
+
+echo $id;
 
 header('Location: /task_manager-markup/index.php');
 
