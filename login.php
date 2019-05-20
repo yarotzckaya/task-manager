@@ -33,9 +33,7 @@ if($user){
 	 $_SESSION["id"] = $user["id"];
 	 $_SESSION['username'] = $user["username"];
 	 $_SESSION['email'] = $user["email"];
-	// $_SESSION["password"] = md5($user[0]["password"]);
-
-	 //var_dump($_SESSION);
+	 
 	 header('Location: /task_manager-markup/index.php');
 	exit;
 } else {
