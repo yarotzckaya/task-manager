@@ -18,10 +18,18 @@ foreach ($_POST as $input) {
 	}
 }
 
+/*
 
-// uploading files to /uploads
-echo '<pre>';
-if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+One thing I cannot do: when the picture is updating, the old version of the picture still 
+in the folder. And if I will update the picture for 1 post 100 times - there are 100 pictures 
+in folder. I don't know how to fix it now
+
+*/
+
+
+// uploading files to /uploads (if() statement was needed for refactoring)
+
+if(move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
     echo "File is uploaded!\n";
 } else {
     echo "File uploading error!\n";
