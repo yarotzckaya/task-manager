@@ -23,11 +23,13 @@ if($_SESSION["id"]) :
         <div class="container">
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">О проекте</h4>
-              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+              <h4 class="text-white">What is it?</h4>
+              <p class="text-muted">This is a small pure-PHP project that I made for practice.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">john@example.com</h4>
+              <h4 class="text-white"> <?php 
+                echo "Hello, " . $_SESSION['username'];
+              ?></h4>
               <ul class="list-unstyled">
                 <li><a href="logout.php" class="text-white">Выйти</a></li>
               </ul>
@@ -40,11 +42,6 @@ if($_SESSION["id"]) :
           <a href="#" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             <strong>Tasks</strong>
-            <p>
-              <?php 
-                echo "Hello, " . $_SESSION['username'];
-              ?>
-            </p>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -57,7 +54,7 @@ if($_SESSION["id"]) :
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Проект Task-manager</h1>
+          <h1 class="jumbotron-heading">Task-manager</h1>
           <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
           <p>
             <a href="http://localhost/task_manager-markup/create.php" class="btn btn-primary my-2">Добавить запись</a>
@@ -89,9 +86,9 @@ if($_SESSION["id"]) :
                                 <p class="card-text"><?php echo $post['title']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
-                                    <a href="post.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">Подробнее</a>
-                                    <a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                                    <a href="delete.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
+                                    <a href="post.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="edit.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a href="delete.php?id=<?php echo $post['id']?>" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Delete</a>
                                   </div>
                                 </div>
                               </div>

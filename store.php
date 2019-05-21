@@ -8,12 +8,8 @@ $uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
 
 // uploading files to /uploads
-echo '<pre>';
-if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
-    echo "File is uploaded!\n";
-} else {
-    echo "File uploading error!\n";
-}
+
+move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile);
 
 
 $title = $_POST['title'];
@@ -23,7 +19,6 @@ $filePath = 'uploads/' . $_FILES['file']['name'];
 $user_id = $_SESSION['id'];
 
 
-//var_dump($_SESSION);
 
 // validation: if no data was sent from the form
 

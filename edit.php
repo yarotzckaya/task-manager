@@ -40,15 +40,6 @@ if(!$post){
     </style>
   </head>
 
-  <?php 
-
-
-            // $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-            // $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'] . ' AND id=' . $_GET['id'];     // select only the posts that belong to the current user
-            // $statement = $pdo->prepare($sql);
-            // $statement = $pdo->query($sql);
-            // $post = $statement->fetch(PDO::FETCH_ASSOC);
-?>
   <body>
     <div class="form-wrapper text-center">
       <form class="form-signin" action="update.php" method="post" enctype="multipart/form-data">
