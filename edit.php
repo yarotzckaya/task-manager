@@ -15,6 +15,8 @@ $statement->execute([':id' => $id]);
 
 $post = $statement->fetch(PDO::FETCH_ASSOC);      // достаем все строки
 
+$_POST['post_id'] = $_GET['id'];
+
 // if the user exists - store data to the session
 
 if(!$post){

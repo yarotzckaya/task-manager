@@ -40,23 +40,26 @@ $_POST['user_id'] = $user_id;
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
 
-if(empty($_FILES['name'])){
-	// don't change filepath
-	$sql = 'UPDATE posts SET title= :title, text= :text, user_id= :user_id WHERE user_id=' . $_SESSION['id'] . ' AND id= ' . $_POST['post_id'];
-} else {
+
 	$filePath = 'uploads/' . $_FILES['file']['name'];
 	$_POST['filePath'] = $filePath;	
-	$sql = 'UPDATE posts SET title= :title, text= :text, filePath= :filePath, user_id= :user_id WHERE user_id=' . $_SESSION['id'] . 'AND id= ' . $_POST['post_id'];
-}
+
+	$statement = $pdo->prepare('UPDATE posts SET title= :title, text= :text, filePath= :filePath WHERE user_id=:user_id AND id=:id');
+	$statement->bindValue(':title', $title);
+	$statement->bindValue(':text', $text);
+
+	$statement->bindValue(':filePath', $filePath);
+
+	$statement->bindValue(':id', $_POST['post_id']);
+	$statement->bindValue(':user_id', $user_id);
+
+
 
 unset($_POST['post_id']);		// we don't need the id in overwriting the data
-//var_dump($_POST);
-
-$statement = $pdo->prepare($sql);
 
 // execute the query
-
-$result = $statement->execute($_POST);		
+	
+$statement->execute();
 
 
 header('Location: /task_manager-markup/index.php');
