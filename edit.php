@@ -5,7 +5,7 @@ if($_SESSION["id"]) :
  
  // check if the post exists
 
-  $id = $_GET['id'];
+$id = $_GET['id'];
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
 $sql = 'SELECT * from posts where id=:id AND user_id=' . $_SESSION['id'];
@@ -16,8 +16,6 @@ $statement->execute([':id' => $id]);
 $post = $statement->fetch(PDO::FETCH_ASSOC);      // достаем все строки
 
 $_POST['post_id'] = $_GET['id'];
-
-// if the user exists - store data to the session
 
 if(!$post){
   $errorMessage = "This post does not exist.";

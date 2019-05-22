@@ -8,16 +8,12 @@ if($_SESSION["id"]) :
 <html lang="en">
   <head>
     <meta charset="utf-8">
-
     <title>Tasks</title>
-
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
-
   <body>
-
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -68,7 +64,6 @@ if($_SESSION["id"]) :
           <div class="row">
          
           <?php 
-
 
             $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
             $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'];     // select only the posts that belong to the current user
