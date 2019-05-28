@@ -7,8 +7,6 @@ if($_SESSION["id"]) {
 // this page will be available only for logged in users
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-$id = $_GET['id'];		// post id
-$user_id = $_SESSION["id"];
 
 
 // deleting connected file
@@ -17,7 +15,7 @@ $user_id = $_SESSION["id"];
 
 
 $statement = $pdo->prepare('SELECT filePath FROM posts WHERE id=:id');
-$statement->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+$statement->bindValue(':id', $_GET['id'], PDO::PARAM_INT);	// post id
 
 $statement->execute();
 $result = $statement->fetch();
