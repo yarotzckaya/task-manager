@@ -19,14 +19,7 @@ foreach ($_POST as $input) {
 }
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-
-/*
-
-One thing I cannot do: when the picture is updating, the old version of the picture still 
-in the folder. And if I will update the picture for 1 post 100 times - there are 100 pictures 
-in folder. I don't know how to fix it now
-
-*/
+$post_id = intval($_POST['post_id']);
 
 
 // uploading files to /uploads (if() statement was needed for refactoring)
@@ -34,14 +27,26 @@ in folder. I don't know how to fix it now
 if(move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
     echo "File is uploaded!\n";
 
+    // if new file was uploaded - it's needed to delete an old version of this fale from the '/uploads'
+
+    $statement = $pdo->prepare('SELECT filePath FROM posts WHERE id=:id');
+    $statement->bindValue(':id', $post_id);		
+
+    $statement->execute();
+    $oldFilePath = $statement->fetch();
+
+    $oldFilePath = $oldFilePath['filePath'];	
+
+    unlink($oldFilePath);
+
+    // creating new filePath
+
     $filePath = 'uploads/' . $_FILES['file']['name'];
-	$_POST['filePath'] = $filePath;	
+    
 } else {
     echo "File uploading error!\n";
 
     // if the file was not change - keep an old filePath
-
-    $post_id = intval($_POST['post_id']);
 
     $statement = $pdo->prepare('SELECT filePath FROM posts WHERE id=:id');
     $statement->bindValue(':id', $post_id);		
@@ -52,8 +57,6 @@ if(move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
     $filePath = $filePath['filePath'];		
 }
 
-
-//var_dump($_POST);
 
 $title = $_POST['title'];
 $text = $_POST['text'];
