@@ -1,11 +1,9 @@
 <?php
-
 // receive data from $_POST and create variables from it
 
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-
 
 // validation: if no data found
 
@@ -21,10 +19,8 @@ foreach ($_POST as $input) {
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
 $sql = 'SELECT id from users where email=:email';
-
 $statement = $pdo->prepare($sql);
 $statement->execute([':email' => $email]);
-
 $user = $statement->fetchColumn();
 
 
@@ -43,8 +39,8 @@ $statement = $pdo->prepare($sql);
 
 // password hash
 
-$_POST['password'] = md5($_POST['password']);		// WHY WE DON'T USE THE VARIABLE FROM LINE 8 - WE'VE STORED PASSWORD THERE!
-$result = $statement->execute($_POST);				// -> because we use exactly all $_POST to store it's data to DB, not the single variales?
+$_POST['password'] = md5($_POST['password']);		
+$result = $statement->execute($_POST);				
 
 if(!$result){
 	$errorMessage = 'Registration error';
@@ -55,4 +51,3 @@ if(!$result){
 // redirection
 
 header('Location: /task_manager-markup/login-form.php');
-exit;
