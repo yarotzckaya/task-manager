@@ -21,7 +21,7 @@
         <?php else: ?>
           <p>Заполните все поля.</p>
         <?php endif; ?>
-      <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Назад</a>
+      <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Back</a>
     </div>
   </body>
 </html>

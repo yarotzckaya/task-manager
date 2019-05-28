@@ -8,10 +8,12 @@ if($_SESSION["id"]) :
 $id = $_GET['id'];
 
 $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-$sql = 'SELECT * from posts where id=:id AND user_id=' . $_SESSION['id'];
 
-$statement = $pdo->prepare($sql);
-$statement->execute([':id' => $id]);
+$statement = $pdo->prepare('SELECT * from posts where id=:id AND user_id=:user_id');
+$statement->bindValue(':id', $id);
+$statement->bindValue(':user_id', $_SESSION['id']);
+
+$statement->execute();
 
 $post = $statement->fetch(PDO::FETCH_ASSOC);      // достаем все строки
 
@@ -44,17 +46,17 @@ if(!$post){
     <div class="form-wrapper text-center">
       <form class="form-signin" action="update.php" method="post" enctype="multipart/form-data">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Редактировать запись</h1>
-        <label for="inputEmail" class="sr-only">Название</label>
+        <h1 class="h3 mb-3 font-weight-normal">Edit task</h1>
+        <label for="inputEmail" class="sr-only">Title</label>
         <input type="text" id="title" name="title" class="form-control" placeholder="Название" value="<?php echo $post['title'];?>">
-        <label for="inputEmail" class="sr-only">Описание</label>
+        <label for="inputEmail" class="sr-only">Description</label>
         <textarea name="text" class="form-control" cols="30" rows="10" placeholder="Описание"><?php echo $post['text'];?></textarea>
         <input type="file" name="file" id="file" value="<?php echo $post['filePath'];?>">
 
         <input type="hidden" name="post_id" id="post_id" value="<?php echo $_GET['id']; ?>">
 
         <img src="<?php echo $post['filePath'];?>" alt="" width="300" class="mb-3">
-        <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать</button>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Edit</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
     </div>
