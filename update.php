@@ -39,18 +39,17 @@ if(move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
 } else {
     echo "File uploading error!\n";
 
-    //var_dump($_POST);
+    // if the file was not change - keep an old filePath
+
     $post_id = intval($_POST['post_id']);
 
-    $sql = 'SELECT filePath FROM posts WHERE id=' . $post_id;
-    //$sql->bindValue(':id', $post_id, PDO::PARAM_INT);		/////////////// does not work
-   // $statement = $pdo->execute($sql);
-    $statement = $pdo->query($sql);
+    $statement = $pdo->prepare('SELECT filePath FROM posts WHERE id=:id');
+    $statement->bindValue(':id', $post_id);		
+
+    $statement->execute();
     $filePath = $statement->fetch();
 
-    $filePath = $filePath['filePath'];
-
-
+    $filePath = $filePath['filePath'];		
 }
 
 
@@ -63,8 +62,6 @@ $user_id = $_SESSION['id'];
 $_POST['user_id'] = $user_id;
 
 // preparation SQL query
-
-
 	
 
 	$statement = $pdo->prepare('UPDATE posts SET title= :title, text= :text, filePath= :filePath WHERE user_id=:user_id AND id=:id');
@@ -73,7 +70,7 @@ $_POST['user_id'] = $user_id;
 
 	$statement->bindValue(':filePath', $filePath);
 
-	$statement->bindValue(':id', $_POST['post_id']);
+	$statement->bindValue(':id', intval($_POST['post_id']));
 	$statement->bindValue(':user_id', $user_id);
 
 
@@ -85,4 +82,4 @@ unset($_POST['post_id']);		// we don't need the id in overwriting the data
 $statement->execute();
 
 
-//header('Location: /task_manager-markup/index.php');
+header('Location: /task_manager-markup/index.php');
