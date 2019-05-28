@@ -27,7 +27,7 @@ if($_SESSION["id"]) :
                 echo "Hello, " . $_SESSION['username'];
               ?></h4>
               <ul class="list-unstyled">
-                <li><a href="logout.php" class="text-white">Выйти</a></li>
+                <li><a href="logout.php" class="text-white">Logout</a></li>
               </ul>
             </div>
           </div>
@@ -66,10 +66,10 @@ if($_SESSION["id"]) :
           <?php 
 
             $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
-            $sql = 'SELECT * from posts WHERE user_id =' . $_SESSION['id'];     // select only the posts that belong to the current user
-            $statement = $pdo->prepare($sql);
+            $statement = $pdo->prepare('SELECT * from posts WHERE user_id =:user_id');     // select only the posts that belong to the current user
+            $statement->bindValue(':user_id', $_SESSION['id']);
 
-            $statement = $pdo->query($sql);
+            $statement->execute();
             $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
           
                foreach($posts as $post){
