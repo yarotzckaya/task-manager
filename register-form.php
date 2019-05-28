@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,19 +18,19 @@
     <div class="form-wrapper text-center">
       <form class="form-signin" action="register.php" method="post">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
-        <label for="username" class="sr-only">Имя</label>
+        <label for="username" class="sr-only">Name</label>
         <input type="text" name = "username" id="username" class="form-control" placeholder="Имя" required autofocus>
 
         <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" name = "email" id="inputEmail" class="form-control" placeholder="Email" required >
 
-        <label for="inputPassword" class="sr-only">Пароль</label>
+        <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name = "password" id="inputPassword" class="form-control" placeholder="Пароль" required>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
-        <a href="#">Войти</a>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <a href="/task_manager-markup/login-form.php">Log in</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
     </div>
