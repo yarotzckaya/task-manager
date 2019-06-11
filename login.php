@@ -1,5 +1,7 @@
 <?php
 
+require_once 'functions.php';
+
 // data from the $_POST
 
 $email = $_POST['email'];
@@ -37,7 +39,5 @@ if($user){
 	 header('Location: /task_manager-markup/index.php');
 	exit;
 } else {
-	$errorMessage = "Invalid data.";
-	include 'errors.php';
-	exit;
+	showErrorMessage("Invalid data");
 }
