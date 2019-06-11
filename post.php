@@ -1,4 +1,7 @@
 <?php
+
+require_once 'functions.php';
+
 session_start();
 if($_SESSION["id"]) :
 
@@ -22,7 +25,7 @@ if($_SESSION["id"]) :
 
 $id = $_GET['id'];
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();
 $statement = $pdo->prepare('SELECT * from posts where id=:id AND user_id=:user_id');
 $statement->bindValue(':id', $id);
 $statement->bindValue(':user_id', $_SESSION['id']);
@@ -32,9 +35,7 @@ $statement->execute();
 $post = $statement->fetch(PDO::FETCH_ASSOC);      // достаем все строки
 
 if(!$post){
-  $errorMessage = "This post does not exist.";
-  include 'errors.php';
-  exit;
+  showErrorMessage("This post does not exist");
 }
 
 ?>
@@ -54,9 +55,7 @@ if(!$post){
 
   else :
 
-    $errorMessage = "You are not logged in! ";
-    include 'errors.php';
-    exit;
+    showErrorMessage("You are not logged in");
 
     endif;
 ?>

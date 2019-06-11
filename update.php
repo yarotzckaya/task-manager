@@ -1,5 +1,7 @@
 <?php
 
+require_once 'functions.php';
+
 session_start();
 
 // data from the $_POST
@@ -10,15 +12,9 @@ $uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
 // validation: if no data was sent from the form
 
-foreach ($_POST as $input) {			
-	if(empty($input)){
-		$errorMessage = 'The fields should not be empty';
-		include 'errors.php';
-		exit;
-	}
-}
+validateEmptyFields();
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();
 $post_id = intval($_POST['post_id']);
 
 

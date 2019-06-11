@@ -10,17 +10,12 @@ $password = md5($_POST['password']);
 
 // validation: if no data was sent from the form
 
-foreach ($_POST as $input) {			
-	if(empty($input)){
-		$errorMessage = 'The fields should not be empty';
-		include 'errors.php';
-		exit;
-	}
-}
+validateEmptyFields();
 
 // preparation SQL query: check if the user already exists
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();
+
 $sql = 'SELECT * from users where email=:email and password=:password';
 
 $statement = $pdo->prepare($sql);

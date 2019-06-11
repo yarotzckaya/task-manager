@@ -1,23 +1,20 @@
 <?php
 // receive data from $_POST and create variables from it
 
+require_once 'functions.php';
+
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
 // validation: if no data found
 
-foreach ($_POST as $input) {			
-	if(empty($input)){
-		$errorMessage = 'The fields should not be empty';
-		include 'errors.php';
-		exit;
-	}
-}
+validateEmptyFields();
 
 // preparation SQL query: check if the user already exists
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();		// creating new PDO object
+
 $sql = 'SELECT id from users where email=:email';
 $statement = $pdo->prepare($sql);
 $statement->execute([':email' => $email]);
@@ -27,9 +24,7 @@ $user = $statement->fetchColumn();
 // if the user exists - show error message and exit
 
 if($user){
-	$errorMessage = 'This user already exists.';
-	include 'errors.php';
-	exit;
+	showErrorMessage("This user already exists");
 }
 
 // if the user is new - prepare the query to DB to store the data
@@ -43,9 +38,7 @@ $_POST['password'] = md5($_POST['password']);
 $result = $statement->execute($_POST);				
 
 if(!$result){
-	$errorMessage = 'Registration error';
-	include 'errors.php';
-	exit;
+	showErrorMessage("Registration error");
 }
 
 // redirection

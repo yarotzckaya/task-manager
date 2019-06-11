@@ -1,5 +1,7 @@
 <?php
 
+require_once 'functions.php';
+
 session_start();
 
 // data from the $_POST
@@ -22,17 +24,13 @@ $user_id = $_SESSION['id'];
 
 // validation: if no data was sent from the form
 
-foreach ($_POST as $input) {			
-	if(empty($input)){
-		$errorMessage = 'The fields should not be empty';
-		include 'errors.php';
-		exit;
-	}
-}
+			
+	validateEmptyFields();
+
 
 // preparation SQL query
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();
 
 $sql = 'INSERT INTO posts (title, text, filePath, user_id) VALUES (:title, :text, :filePath, :user_id)';
 $statement = $pdo->prepare($sql);

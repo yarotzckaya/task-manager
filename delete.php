@@ -1,12 +1,14 @@
 <?php
 
+require_once 'functions.php';
+
 session_start();
 
 if($_SESSION["id"]) {
 
 // this page will be available only for logged in users
 
-$pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+$pdo = connect();
 
 
 // deleting connected file
@@ -39,6 +41,5 @@ $statement->execute();
 header('Location: /task_manager-markup/index.php');
 
 } else {
-  $errorMessage = "This post is not deleted.";
-  include 'errors.php';
+  showErrorMessage("This post was not deleted");
 }

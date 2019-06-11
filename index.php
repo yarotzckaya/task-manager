@@ -1,4 +1,7 @@
 <?php
+
+require_once 'functions.php';
+
 session_start();
 
 if($_SESSION["id"]) :
@@ -65,7 +68,7 @@ if($_SESSION["id"]) :
          
           <?php 
 
-            $pdo = new PDO('mysql:host=localhost;dbname=task-manager', 'root', '');
+            $pdo = connect();
             $statement = $pdo->prepare('SELECT * from posts WHERE user_id =:user_id');     // select only the posts that belong to the current user
             $statement->bindValue(':user_id', $_SESSION['id']);
 
@@ -117,9 +120,7 @@ if($_SESSION["id"]) :
 
   else :
 
-    $errorMessage = "You are not logged in! ";
-    include 'errors.php';
-    exit;
+    showErrorMessage("You are not logged in");
 
     ?>
  <?php endif;

@@ -1,5 +1,7 @@
 <?php
+
 require_once 'functions.php';
+
 session_start();
 
 if($_SESSION["id"]) :
@@ -48,9 +50,7 @@ if($_SESSION["id"]) :
 
   else :
 
-    $errorMessage = "You are not logged in! ";
-    include 'errors.php';
-    exit;
+    showErrorMessage("You are not logged in!");
 
     ?>
  <?php endif;
