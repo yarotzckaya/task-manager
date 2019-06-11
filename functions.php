@@ -27,3 +27,10 @@ function validateEmptyFields()
 	}
 }
 
+// redirects user using local paths
+function redirect(string $uri)
+{
+	$domainName = '/task_manager-markup/';
+	header('Location: ' . $domainName . $uri);
+}
+

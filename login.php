@@ -31,7 +31,7 @@ if($user){
 	 $_SESSION['username'] = $user["username"];
 	 $_SESSION['email'] = $user["email"];
 	 
-	 header('Location: /task_manager-markup/index.php');
+	 redirect('index.php');
 	exit;
 } else {
 	showErrorMessage("Invalid data");

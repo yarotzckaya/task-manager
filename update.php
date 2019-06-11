@@ -81,4 +81,4 @@ unset($_POST['post_id']);		// we don't need the id in overwriting the data
 $statement->execute();
 
 
-header('Location: /task_manager-markup/index.php');
+redirect('index.php');

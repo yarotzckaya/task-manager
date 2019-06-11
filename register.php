@@ -43,4 +43,4 @@ if(!$result){
 
 // redirection
 
-header('Location: /task_manager-markup/login-form.php');
+redirect('login-form.php');

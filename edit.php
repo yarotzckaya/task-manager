@@ -12,7 +12,9 @@ $id = $_GET['id'];
 
 $pdo = connect();
 
-$statement = connect();
+$sql = 'SELECT * from posts where id=:id AND user_id=:user_id';
+$statement = $pdo->prepare($sql);
+
 $statement->bindValue(':id', $id);
 $statement->bindValue(':user_id', $_SESSION['id']);
 

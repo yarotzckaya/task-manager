@@ -25,7 +25,7 @@ $user_id = $_SESSION['id'];
 // validation: if no data was sent from the form
 
 			
-	validateEmptyFields();
+validateEmptyFields();
 
 
 // preparation SQL query
@@ -45,4 +45,4 @@ $_POST["user_id"] = $user_id;
 $result = $statement->execute($_POST);				
 
 
-header('Location: /task_manager-markup/index.php');
+redirect('index.php');

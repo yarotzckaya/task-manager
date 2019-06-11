@@ -37,8 +37,7 @@ $statement->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_INT);
 $statement->execute();
 
 
-
-header('Location: /task_manager-markup/index.php');
+redirect('index.php');
 
 } else {
   showErrorMessage("This post was not deleted");
